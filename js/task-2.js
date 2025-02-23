@@ -28,7 +28,6 @@ const getUsersWithFriend = (users, friendName) =>
 // includes(): Перевіряє, чи міститься friendName у масиві friends кожного користувача. 
 // Якщо так, то цей користувач додається до масиву, який ми отримуюєму в результаті виконання функції.
 
-
 const allUsers = [
     {
     name: "Moore Hensley",
