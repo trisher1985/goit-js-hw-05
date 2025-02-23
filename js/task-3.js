@@ -14,12 +14,13 @@
 // масиву. У функції сортування порівнюється кількість друзів (friends.length) у кожного користувача.
 // Сортування відбувається за спаданням, тому від більшого до меншого (b.friends.length - a.friends.length).
 
-const sortByDescendingFriendCount = (users) => {
-    return users.sort((a, b) => b.friends.length - a.friends.length);
-};
+const sortByDescendingFriendCount = (users) => 
+    users.toSorted((a, b) => b.friends.length - a.friends.length);
+
+//сортуємо за спаданням (b.friends.length - a.friends.length).
 
 // У консоль виводиться результат сортування масиву користувачів, який містить об'єкти
-// з іменами, списками друзів та стать:
+// з іменами, списками друзів та стать і є новим відсортованим масивом.:
 
 console.log(
     sortByDescendingFriendCount([
