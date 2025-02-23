@@ -1,63 +1,72 @@
 'use strict';
 
-// Оголоси функцію getShippingCost(country), яка повинна перевіряти можливість 
-// доставки товару в країну користувача (параметр country) і повертати повідомлення 
-// про результат. Обов'язково використовуй інструкцію switch.
+// Модуль5. Задача 4. Загальний баланс
 
-// Формат рядка, що повертається "Shipping to <country> will cost <price> credits", 
-// де замість <country> і <price> необхідно підставити відповідні значення.
+// Напиши стрілочну функцію getTotalBalanceByGender(users, gender), яка прийматиме два параметра:
 
-// Список країн і вартість доставки:
+// перший параметр users — масив об’єктів користувачів,
+// другий параметр gender — рядок, що зберігає стать.
+// Функція має використовувати ланцюжок виклику методів та повертати загальний баланс користувачів 
+// (властивість balance), стать яких (властивість gender) збігається зі значенням параметра gender.
 
-// China — 100 кредитів
-// Chile — 250 кредитів
-// Australia — 170 кредитів
-// Jamaica — 120 кредитів
+// __________________________________________________________________________
 
-// Зі списку видно, що доставка можлива не скрізь. Якщо зазначена країна відсутня у 
-// списку, то функція повинна повернути рядок "Sorry, there is no delivery to your country".
+// filter: Використовується для відбору користувачів, у яких властивість gender збігається 
+// з переданим значенням.
+// reduce: Застосовується для підсумовування балансу відфільтрованих користувачів. 
+// Початкове значення загальної суми балансів відфільтрованих користувачів totalBalance встановлено на 0.
 
-// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності 
-// її роботи. У консоль будуть виведені результати її роботи.
+// const getTotalBalanceByGender = (users, gender) => {
+//     return users
+//       .filter(user => user.gender === gender) // сортуємо користувачів за статтю (gender)
+//       .reduce((totalBalance, user) => totalBalance + user.balance, 0); // Сумуємо загальний баланс
+// };
 
-// console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-// console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-// console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-// console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-// console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-// console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+const getTotalBalanceByGender = (users, gender) => {
+    return users
+      .filter(user => user.gender === gender) // Фільтруємо користувачів за статтю
+      .reduce((totalBalance, user) => totalBalance + user.balance, 0); // Сумуємо баланс
+    };
 
-function getShippingCost(country) {
-    let price;
-    switch (country) {
-        case "China":
-            price = 100;
-            break;
-        case "Chile":
-            price = 250;
-            break;
-        case "Australia":
-            price = 170;
-            break;
-        case "Jamaica":
-            price = 120;
-            break;
-        default:
-            return "Sorry, there is no delivery to your country";
-    }
-    return `Shipping to ${country} will cost ${price} credits`;
-}
+    const clients = [
+        {
+        name: "Moore Hensley",
+        gender: "male",
+        balance: 2811
+        },
+        {
+        name: "Sharlene Bush",
+        gender: "female",
+        balance: 3821
+        },
+        {
+        name: "Ross Vazquez",
+        gender: "male",
+        balance: 3793
+        },
+        {
+        name: "Elma Head",
+        gender: "female",
+        balance: 2278
+        },
+        {
+        name: "Carey Barr",
+        gender: "male",
+        balance: 3951
+        },
+        {
+        name: "Blackburn Dotson",
+        gender: "male",
+        balance: 1498
+        },
+        {
+        name: "Sheree Anthony",
+        gender: "female",
+        balance: 2764
+        }
+    ];
 
-// Перевірка роботи функції
-// 1
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-// 2
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-// 3
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-// 4
-console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-// 5
-console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-// 6
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+// Функція повертає загальний баланс для користувачів відповідної статі.
+
+  console.log(getTotalBalanceByGender(clients, "male")); // 12053
+  console.log(getTotalBalanceByGender(clients, "female")); // 8863

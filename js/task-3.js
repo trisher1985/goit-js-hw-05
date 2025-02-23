@@ -1,46 +1,104 @@
 'use strict';
 
-// Функція checkForSpam(message) приймає рядок (параметр message), перевіряє 
-// його на вміст заборонених слів spam і sale, і повертає результат перевірки. 
-// Слова в рядку параметра message можуть бути в довільному регістрі, 
-// наприклад SPAM або sAlE.
+// Модуль5. Задача 3. Сортування за кількістю друзів
 
-// Доповни код функції таким чином, що:
+// Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме 
+// один параметр users — масив об’єктів користувачів.
+// Функція має повертати масив усіх користувачів, відсортованих за спаданням кількості
+// їх друзів (властивість friends).
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+//  У консоль будуть виведені результати її роботи.
+// __________________________________________________________________________
 
-// Якщо знайдено заборонене слово (spam або sale), то функція повертає буль true
-// Якщо в рядку відсутні заборонені слова, функція повертає буль false
+// Функція sortByDescendingFriendCount: Приймає масив об'єктів users. Використовує метод sort для сортування 
+// масиву. У функції сортування порівнюється кількість друзів (friends.length) у кожного користувача.
+// Сортування відбувається за спаданням, тому від більшого до меншого (b.friends.length - a.friends.length).
 
-// Візьми код нижче і встав після оголошення своєї функції для перевірки 
-// коректності її роботи. У консоль будуть виведені результати її роботи.
+const sortByDescendingFriendCount = (users) => {
+    return users.sort((a, b) => b.friends.length - a.friends.length);
+};
 
-// console.log(checkForSpam("Latest technology news")); // false
-// console.log(checkForSpam("JavaScript weekly newsletter")); // false
-// console.log(checkForSpam("Get best sale offers now!")); // true
-// console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-// console.log(checkForSpam("Trust me, this is not a spam message")); // true
-// console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-// console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+// У консоль виводиться результат сортування масиву користувачів, який містить об'єкти
+// з іменами, списками друзів та стать:
 
-function checkForSpam(message) {
-    // Переводимо повідомлення в нижній регістр для перевірки
-    const lowerCaseMessage = message.toLowerCase();
-    
-    // Перевіряємо наявність заборонених слів
-    return lowerCaseMessage.includes('spam') || lowerCaseMessage.includes('sale');
-}
+console.log(
+    sortByDescendingFriendCount([
+    {
+        name: "Moore Hensley",
+        friends: ["Sharron Pace"],
+        gender: "male"
+    },
+    {
+        name: "Sharlene Bush",
+        friends: ["Briana Decker", "Sharron Pace"],
+        gender: "female"
+    },
+    {
+        name: "Ross Vazquez",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        gender: "male"
+    },
+    {
+        name: "Elma Head",
+        friends: ["Goldie Gentry", "Aisha Tran"],
+        gender: "female"
+    },
+    {
+        name: "Carey Barr",
+        friends: ["Jordan Sampson", "Eddie Strong"],
+        gender: "male"
+    },
+    {
+        name: "Blackburn Dotson",
+        friends: ["Jacklyn Lucas", "Linda Chapman"],
+        gender: "male"
+    },
+    {
+        name: "Sheree Anthony",
+        friends: ["Goldie Gentry", "Briana Decker"],
+        gender: "female"
+    }
+    ])
+);
 
-// Перевірка роботи функції
-// 1
-console.log(checkForSpam("Latest technology news")); // false
-// 2
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-// 3
-console.log(checkForSpam("Get best sale offers now!")); // true
-// 4
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-// 5
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-// 6
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-// 7
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+  // Функція повертає відсортований масив користувачів, 
+  // де перший користувач має найбільшу кількість друзів, а останній — найменшу.
+
+  // [
+  //   {
+  //     name: "Ross Vazquez",
+  //     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+  //     gender: "male"
+  //   },
+  //   {
+  //     name: "Sharlene Bush",
+  //     friends: ["Briana Decker", "Sharron Pace"],
+  //     gender: "female"
+  //   },
+  //   {
+  //     name: "Elma Head",
+  //     friends: ["Goldie Gentry", "Aisha Tran"],
+  //     gender: "female"
+  //   },
+  //   {
+  //     name: "Carey Barr",
+  //     friends: ["Jordan Sampson", "Eddie Strong"],
+  //     gender: "male"
+  //   },
+  //   {
+  //     name: "Blackburn Dotson",
+  //     friends: ["Jacklyn Lucas", "Linda Chapman"],
+  //     gender: "male"
+  //   },
+  //   {
+  //     name: "Sheree Anthony",
+  //     friends: ["Goldie Gentry", "Briana Decker"],
+  //     gender: "female"
+  //   },
+  //   {
+  //     name: "Moore Hensley",
+  //     friends: ["Sharron Pace"],
+  //     gender: "male"
+  //   }
+  // ]
+
